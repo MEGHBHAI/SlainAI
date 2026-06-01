@@ -4,11 +4,10 @@ from groq import Groq
 from dotenv import load_dotenv
 import os
 
+app = Flask(__name__)
 load_dotenv()
 
-CORS(app, origins=[
-    "https://ai.slaindev.in"
-])
+CORS(app, resources={r"/*": {"origins": "*"}})
 
 client = Groq(
     api_key=os.getenv("GROQ_API_KEY")
